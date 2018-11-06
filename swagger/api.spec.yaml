@@ -1,0 +1,48 @@
+swagger: '2.0'
+info:
+  title: Testing Middleware
+  description: A test
+  version: v1
+basePath: /v1
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /foo:
+    post:
+      description: ''
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/FooPost'
+      responses:
+        '201':
+          description: 'Successful post'
+          schema:
+            $ref: '#/definitions/FooPost'
+    parameters: []
+definitions:
+  Error:
+    type: object
+    properties:
+      message:
+        type: string
+    required:
+      - message
+  FooPost:
+    required:
+      - id
+      - name
+    type: object
+    properties:
+      id:
+        title: Id
+        type: string
+        minLength: 1
+      name:
+        title: Name
+        type: string
+        minLength: 1
